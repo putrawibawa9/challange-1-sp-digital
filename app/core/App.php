@@ -1,4 +1,5 @@
 <?php
+
 class App{
     // initiate the variable for each and set the default for each functionality
     protected $controller = "bulletin";
@@ -7,7 +8,7 @@ class App{
 
     // Controlling the url and manage it so that we can use it
     public function __construct(){
-        $url = $this->parseURL();
+        $url = parseURL();
 
         // Get Controller Name
         if($url !== null && isset($url[0]) && file_exists('../app/controllers/' . $url[0] . '.php')){
@@ -34,13 +35,5 @@ class App{
         // Running the controller, its method, and the params if available
         call_user_func_array([$this->controller, $this->method], $this->params);
     }
-    // Getting the url and sanitize it so that we can use it as controller, method, and params
-    public function parseURL(){
-        if(isset($_GET['url'])){
-            $url = rtrim($_GET['url'], '/');
-            $url = filter_var($url, FILTER_SANITIZE_URL);
-            $url = explode('/', $url);    
-            return $url;
-        }
-    }
 }
+?>
