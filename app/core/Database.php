@@ -1,11 +1,12 @@
 <?php
 namespace core;
+use Config\Config;
 class Database{
     private static $instance = null;
-    private $host = DBHOST;
-    private $user = DBUSER;
-    private $db = DBNAME;
-    private $pass = DBPASS;
+    private $host = Config::DBHOST;
+    private $user = Config::DBUSER;
+    private $db = Config::DBNAME;
+    private $pass = Config::DBPASS;
 
     private $dbh;
     private $stmt;

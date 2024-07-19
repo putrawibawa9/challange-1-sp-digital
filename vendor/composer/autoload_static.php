@@ -14,6 +14,7 @@ class ComposerStaticInitd751713988987e9331980363e24189ce
         'C' => 
         array (
             'Core\\' => 5,
+            'Config\\' => 7,
         ),
     );
 
@@ -25,6 +26,10 @@ class ComposerStaticInitd751713988987e9331980363e24189ce
         'Core\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app/core',
+        ),
+        'Config\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app/config',
         ),
     );
 

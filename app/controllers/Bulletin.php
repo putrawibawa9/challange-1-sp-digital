@@ -2,6 +2,7 @@
 use Core\Controller;
 use Core\Flasher;
 use Models\Bulletin_model;
+use Config\Config;
 
 class Bulletin extends Controller{
 
@@ -14,7 +15,7 @@ class Bulletin extends Controller{
         $text = $_POST['text'];
         if(strlen($text)<10 || strlen($text)>200){
           Flasher::setFlash('Failed, ', 'Text must be between 10 and 200 characters', 'primary');
-          header('Location: '. BASEURL . '/bulletin/viewBulletin');
+          header('Location: '. Config::BASEURL . '/bulletin/viewBulletin');
           return;
         };
         $bulletin = new Bulletin_model;
@@ -22,7 +23,7 @@ class Bulletin extends Controller{
         $bulletin->timestamp = date('Y-m-d H:i:s');
         if($bulletin->insert() > 0){
       Flasher::setFlash('sucesss,', 'Bulletin successfuly added', 'success');
-      header('Location: '. BASEURL . '/bulletin/viewBulletin');
+      header('Location: '. Config::BASEURL . '/bulletin/viewBulletin');
         }
     }
 
