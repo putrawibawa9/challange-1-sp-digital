@@ -8,7 +8,7 @@ class App{
 
     // Controlling the url and manage it so that we can use it
     public function __construct(){
-        $url = parseURL();
+        $url = Router::parseURL();
 
         // Get Controller Name
         if($url !== null && isset($url[0]) && file_exists('../app/controllers/' . $url[0] . '.php')){
