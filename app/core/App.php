@@ -1,11 +1,6 @@
 <?php
-
-class App{
-    // initiate the variable for each and set the default for each functionality
-    protected $controller = "bulletin";
-    protected $method = "viewBulletin";
-    protected $params = [];
-
+require_once 'Router.php';
+class App extends Router{
     // Controlling the url and manage it so that we can use it
     public function __construct(){
         $url = Router::parseURL();
