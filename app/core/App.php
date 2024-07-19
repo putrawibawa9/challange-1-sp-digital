@@ -1,5 +1,6 @@
 <?php
-require_once 'Router.php';
+namespace core;
+use Core\Router;
 class App extends Router{
     // Controlling the url and manage it so that we can use it
     public function __construct(){

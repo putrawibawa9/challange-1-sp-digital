@@ -1,4 +1,5 @@
 <?php
+namespace core;
 class QueryBuilder {
     protected $db;
     protected $query;

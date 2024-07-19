@@ -1,4 +1,5 @@
 <?php
+namespace core;
 // This is the main controller for being parent for the controllers in controllers folders
 class Controller {
     // Displaying the presentation layouts

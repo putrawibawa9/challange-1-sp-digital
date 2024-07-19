@@ -14,7 +14,7 @@
     <div class="container">
         <h1>Bulletin board Level 1</h1>
         <div class="board">
-                <?php Flasher::flash()?>
+                <?php Core\Flasher::flash()?>
             <form method="post" id="messageForm" action="<?= BASEURL?>/bulletin/store">
                 <textarea name="text" id="messageInput" placeholder="Must be filled in"></textarea>
                 <button type="submit">Submit</button>

@@ -1,5 +1,6 @@
 <?php
-
+namespace core;
+use Core\Database;
 abstract class Model
 {
     protected static $table;

@@ -1,5 +1,5 @@
 <?php
-
+namespace core;
 class Flasher{
     public static function setFlash($msg, $action, $type){
         $_SESSION['flash'] = [

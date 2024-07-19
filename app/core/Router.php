@@ -1,5 +1,5 @@
 <?php
-
+namespace core;
 class Router{
     protected $controller = "bulletin";
     protected $method = "viewBulletin";
