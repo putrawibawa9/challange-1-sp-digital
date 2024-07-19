@@ -1,6 +1,7 @@
 <?php
 use Core\Controller;
 use Core\Flasher;
+use Models\Bulletin_model;
 
 class Bulletin extends Controller{
 

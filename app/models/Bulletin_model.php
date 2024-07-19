@@ -1,4 +1,5 @@
 <?php
+namespace Models;
 use Core\Model;
 class Bulletin_model extends Model
 {
