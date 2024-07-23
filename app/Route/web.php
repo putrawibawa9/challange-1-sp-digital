@@ -1,6 +1,5 @@
 <?php
-namespace Route;
-class Route{
+use core\Router;
+use core\URL;
 
-
-}
+$url = URL::parseURL();
