@@ -1,36 +1,46 @@
 <?php
 namespace Core;
+
 class Router {
-    protected $controller = "bulletin";
+    protected $routes = [];
+    protected $controller = "BulletinController";
     protected $method = "viewBulletin";
     protected $params = [];
-    // Controlling the url and manage it so that we can use it
-    public function __construct(){
-        $url = URL::parseURL();
 
-        // Get Controller Name
-        if($url !== null && isset($url[0]) && file_exists('../app/controllers/' . $url[0] . '.php')){
-            $this->controller = $url[0];
-            unset($url[0]);
+    public function get($uri, $controllerMethod) {
+        $this->routes['GET'][$uri] = $controllerMethod;
+    }
+
+    public function post($uri, $controllerMethod) {
+        $this->routes['POST'][$uri] = $controllerMethod;
+    }
+
+    public function dispatch() {
+        $url = URL::parseURL();
+        $parsedUri = isset($url[0]) ? '/' . $url[0] : '/';
+        $requestMethod = $_SERVER['REQUEST_METHOD'];
+
+        if (isset($this->routes[$requestMethod][$parsedUri])) {
+            $controllerMethod = explode('@', $this->routes[$requestMethod][$parsedUri]);
+            $this->controller = $controllerMethod[0];
+            $this->method = $controllerMethod[1];
+        } else {
+           require_once "../app/views/error/index.php";
+           return;
         }
 
-        // Get Method Name
-        require_once "../app/controllers/$this->controller.php";
+        require_once "../app/controllers/{$this->controller}.php";
         $this->controller = new $this->controller;
 
-        if(isset($url[1])){
-            if(method_exists($this->controller,$url[1])){
+        if (isset($url[1])) {
+            if (method_exists($this->controller, $url[1])) {
                 $this->method = $url[1];
                 unset($url[1]);
             }
         }
 
-        // Get the params
-        if(!empty($url)){
-            $this->params = array_values($url);
-        }
+        $this->params = $url ? array_values($url) : [];
 
-        // Running the controller, its method, and the params if available
         call_user_func_array([$this->controller, $this->method], $this->params);
     }
 }
